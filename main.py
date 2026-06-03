@@ -1,40 +1,15 @@
 import os
 import shutil
 
+
 def collecte(chemin_fichier_externe):
-    """
-    Étape 1: Collecte 
-    Prend un fichier externe (la source) et l'extrait (le copie) 
-    dans le dossier 'source/' du projet sous le nom 'data.csv'.
-    """
-    # 1. Définir la destination obligatoire dans notre projet
-    dossier_destination = "source"
-    fichier_destination = os.path.join(dossier_destination, "data.csv")
-    
-    # 2. Vérifier si le fichier externe qu'on veut extraire existe vraiment
-    if not os.path.exists(chemin_fichier_externe):
-        print(f"[COLLECTE] Échec : Le fichier source externe '{chemin_fichier_externe}' est introuvable.")
-        return False
-        
     try:
-        # 3. Créer le dossier 'source' s'il n'existe pas encore
-        if not os.path.exists(dossier_destination):
-            os.makedirs(dossier_destination)
-            
-        # 4. Extraire/Copier le fichier vers notre zone de stockage source
-        shutil.copy(chemin_fichier_externe, fichier_destination)
-        print(f"[COLLECTE] Succès : Fichier extrait de '{chemin_fichier_externe}' et copié vers '{fichier_destination}'.")
-        return True
-        
+        shutil.copy(chemin_fichier_externe, os.path.join("source", "data.csv"))
+        print("[COLLECTE] Succès : Fichier copié avec succès.")
     except Exception as e:
-        print(f"[COLLECTE] Erreur lors de l'extraction : {e}")
-        return False
+        print(f"[COLLECTE] Erreur : {e}")
+
 
 if __name__ == "__main__":
-    print("--- Test de la Collecte Active ---")
-    
-    # Pour tester, remplace ce chemin par un vrai fichier qui existe sur ton PC !
-    # Exemple : r"C:/Users/Dramane/Downloads/mon_nouveau_fichier.csv"
-    chemin_test_externe = r"C:\Master1\ETL_Pharmacie\data\donnees_csv\Fait_Ventes.csv"
-    
-    collecte(chemin_test_externe)
+    chemin_test = r"C:\Master1\ETL_Pharmacie\data\donnees_csv\Dim_Produit.csv"
+    collecte(chemin_test)
