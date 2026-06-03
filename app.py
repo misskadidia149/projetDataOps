@@ -1,5 +1,6 @@
 import os
 import random
+import pandas as pd
 
 def charger_donnees(chemin_fichier):
     """Vérifie la présence du fichier et simule son chargement."""
@@ -19,6 +20,13 @@ def generer_mdp(n):
     return mot_de_passe
 print(generer_mdp(12))
 print(generer_mdp(5))
+#nouhnoun
+df = pd.read_csv("data.csv")
+
+df = df.drop_duplicates()
+
+print(df)
+
 
 if __name__ == "__main__":
     # Test de la fonction
