@@ -38,6 +38,8 @@ if __name__ == "__main__":
     chemin_test_externe = r"C:\Master1\ETL_Pharmacie\data\donnees_csv\Fait_Ventes.csv"
     
     collecte(chemin_test_externe)
+
+    
 # Tâche 3: Créer la fonction tl_hive() pour copier ou charger le fichier du dossier hdfs/ vers le dossier hive/
 import shutil, os
 def tl_hive():
